@@ -1,0 +1,2 @@
+During the period the Commission was giving thought to this situation,	audios/ljspeech/LJ049-0185_24K.wav	In addition, the proposed legislation will insure.	audios/ljspeech/LJ049-0185_24K_prompted_libritts.wav
+In addition, the proposed legislation will insure.	audios/ljspeech/LJ049-0124_24K.wav	During the period the Commission was giving thought to this situation,	audios/ljspeech/LJ049-0124_24K_prompted_libritts.wav

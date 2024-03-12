@@ -1,0 +1,8 @@
+010_Khoa3_1_1|anh ta
+040_Khoa3_5b_4|tất cả
+074_Khoa3_1_1_1_i|hai mươi ba
+077_Khoa3_1_1_1_iv|em theo anh
+090_Khoa3_1_2_1_1|hai ngàn ba trăm
+100_Khoa3_4_1_1_1_1|bảy trăm hai mươi ba
+109_Khoa3_1_1_1_1_1_1|hai anh em đi theo anh
+120_Khoa3_5b_4_3_1_1_6|tất cả mọi người đi theo anh
