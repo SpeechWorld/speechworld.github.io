@@ -1,6 +1,6 @@
-# demos
+# [SpeechWorld](https://speechworld.github.io)
 
 
-## [MetaSpeakerStyle](https://speechworld.github.io/MetaSpeakerStyle/index.html)
+## [MetaSpeakerStyle](https://speechworld.github.io/MetaSpeakerStyle/)
 
-## [FastStreamSpeech](https://speechworld.github.io/faststreamspeech/index.html)
+## [FastStreamSpeech](https://speechworld.github.io/faststreamspeech/)
