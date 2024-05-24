@@ -2,229 +2,217 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>streaming fastspeech</title>
+	<meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.88.1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+	<link rel="stylesheet" href="../css/custom.css">
+	<link rel="stylesheet" href="../css/normalize.css">
 
-  <meta property="og:type" content="website" />
-
-  <link rel="stylesheet" href="https://latex.now.sh/style.min.css" />
-  <style>
-    body {max-width: 60%;}
-    audio {
-      max-width: 100%;
-      max-height: 100%;
-      box-sizing:border-box;
-    }
-    table tbody tr td {
-      min-width: 170px;
-      box-sizing:border-box;
-    }
-    table {
-      max-width: 100%;
-      border-top: 0px;
-      border-bottom: 1.2px solid rgba(46, 46, 46, 0.253);
-    }
-    table tbody tr:last-child td {
-      border-bottom: 0px;
-    }
-    table tbody tr:first-child td {
-      border-top: 1.36px;
-    }
-    @media only screen and (max-width: 500px) {
-      body {
-        max-width: 100%;
-      }
-    }
-    @media only screen and (min-width: 900px) {
-      body {
-        max-width: 60%;
-      }
-    }
-    </style>
+	<title>FastStreamSpeech</title>
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<script src="//code.jquery.com/jquery.min.js"></script>
 </head>
 
-<body id="top" class="libertinus">
-  <header role="banner">
-    <h2 style="text-align: center;">
-            HOW TO PUSH THE FASTEST MODEL 50X FASTER:
-            <br>
-            STREAMING NON-AUTOREGRESSIVE SPEECH SYNTHESIS ON
-            <br>
-            RESOUCE-LIMITED DEVICES
-    </h2>
-  </header>
-  <p>
-    <span style="font-weight: bold;">Abstract:</span> 
-    In voice-based human-machine interaction applications, the
-    synthesis speech module's response time or system latency is
-    one of the most critical factors affecting the user experience.
-    Minimizing the latency of the high-quality text-to-speech
-    system on end-user resource-limited devices is an important
-    task. In this paper, the FastStreamSpeech model is proposed
-    combining the advantages of the advanced approaches in
-    neural-based speech synthesis. The proposed method
-    includes (1) a specific streaming inference architecture for the
-    non-autoregressive acoustic and vocoder models and (2) an
-    attention masking mechanism in the training phase. The
-    experimental evaluations of the proposed model budget
-    mobile CPU show that this model can significantly reduce the
-    system latency by 5 to 50 times compared with the original
-    model while maintaining the high quality of output speech.
-  </p>
-  <p>
-    <span style="font-weight: bold;">Index Terms</span> — high-quality text-to-speech, streaming
-    inference, non-autoregressive model, resource-limited
-    devices, Vietnamese speech synthesis.
-  </p>
-  <main>
-    <article>
-      <header>
-        <h2>Audio samples</h2>
-      </header>
-      <blockquote style="font-size:large">
-        "Ngày mai không biết trời có mưa nhiều không hả anh , anh nhớ mang áo mưa đi nhé"
-      </blockquote>
-      <div class="scroll-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="text-align: center">Ground Truth</th>
-              <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
-              <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
-              <th style="text-align: center">FastStreamSpeech</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><audio controls src="./assets/audio/gt/COMPARE_005.wav" type="audio/wav">gt</audio></td>
-              <td><audio controls src="./assets/audio/bl/COMPARE_005.wav" type="audio/wav">bl</audio></td>
-              <td><audio controls src="./assets/audio/voc/COMPARE_005.wav" type="audio/wav">voc</audio></td>
-              <td><audio controls src="./assets/audio/fs/COMPARE_005.wav" type="audio/wav">fs</audio></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <blockquote style="font-size:large">
-        "Ngay sau lễ khai mạc , Đại hội đồng AIPO 27 đã tiến hành phiên họp toàn thể lần thứ nhất ."
-      </blockquote>
-      <div class="scroll-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="text-align: center">Ground Truth</th>
-              <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
-              <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
-              <th style="text-align: center"> FastStreamSpeech</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><audio controls src="./assets/audio/gt/MISC_33461.wav" type="audio/wav">gt</audio></td>
-              <td><audio controls src="./assets/audio/bl/MISC_33461.wav" type="audio/wav">bl</audio></td>
-              <td><audio controls src="./assets/audio/voc/MISC_33461.wav" type="audio/wav">voc</audio></td>
-              <td><audio controls src="./assets/audio/fs/MISC_33461.wav" type="audio/wav">fs</audio></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <blockquote style="font-size:large">
-        "Khách nước ngoài đến Việt Nam ăn Tết thường cảm thấy thú vị trước những tập tục này."
-      </blockquote>
-      <div class="scroll-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="text-align: center">Ground Truth</th>
-              <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
-              <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
-              <th style="text-align: center"> FastStreamSpeech</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><audio controls src="./assets/audio/gt/SYNTAX_106.wav" type="audio/wav">gt</audio></td>
-              <td><audio controls src="./assets/audio/bl/SYNTAX_106.wav" type="audio/wav">bl</audio></td>
-              <td><audio controls src="./assets/audio/voc/SYNTAX_106.wav" type="audio/wav">voc</audio></td>
-              <td><audio controls src="./assets/audio/fs/SYNTAX_106.wav" type="audio/wav">fs</audio></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <blockquote style="font-size:large">
-        "Việt Nam hiện đang đẩy mạnh công cuộc cải cách và EU mong muốn giúp đỡ Việt Nam đạt được mục đích này ."
-      </blockquote>
-      <div class="scroll-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="text-align: center">Ground Truth</th>
-              <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
-              <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
-              <th style="text-align: center"> FastStreamSpeech</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><audio controls src="./assets/audio/gt/DIEP_03946.wav" type="audio/wav">gt</audio></td>
-              <td><audio controls src="./assets/audio/bl/DIEP_03946.wav" type="audio/wav">bl</audio></td>
-              <td><audio controls src="./assets/audio/voc/DIEP_03946.wav" type="audio/wav">voc</audio></td>
-              <td><audio controls src="./assets/audio/fs/DIEP_03946.wav" type="audio/wav">fs</audio></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <blockquote style="font-size:large">
-        "Sự vươn lên và thành công của những người ấy làm tôi nể phục."
-      </blockquote>
-      <div class="scroll-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="text-align: center">Ground Truth</th>
-              <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
-              <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
-              <th style="text-align: center"> FastStreamSpeech</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><audio controls src="./assets/audio/gt/SYNTAX_214.wav" type="audio/wav">gt</audio></td>
-              <td><audio controls src="./assets/audio/bl/SYNTAX_214.wav" type="audio/wav">bl</audio></td>
-              <td><audio controls src="./assets/audio/voc/SYNTAX_214.wav" type="audio/wav">voc</audio></td>
-              <td><audio controls src="./assets/audio/fs/SYNTAX_214.wav" type="audio/wav">fs</audio></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <blockquote style="font-size:large">
-        "trong những năm qua , bằng niềm say mê sáng tạo , nhiều nông dân đã tự tìm tòi và sáng chế ra nhiều loại thiết bị
-        sử dụng trong sản xuất nông nghiệp như máy tuốt lúa , máy cấy lúa mi ni , máy tẽ ngô , máy cắt cỏ , máy băm bèo ,
-        góp phần đáng kể vào việc tăng năng suất và giảm thời gian lao động cho người nông dân"
-      </blockquote>
-      <div class="scroll-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="text-align: center">Ground Truth</th>
-              <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
-              <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
-              <th style="text-align: center"> FastStreamSpeech</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><audio controls src="./assets/audio/gt/COMPARE_012.wav" type="audio/wav">gt</audio></td>
-              <td><audio controls src="./assets/audio/bl/COMPARE_012.wav" type="audio/wav">bl</audio></td>
-              <td><audio controls src="./assets/audio/voc/COMPARE_012.wav" type="audio/wav">voc</audio></td>
-              <td><audio controls src="./assets/audio/fs/COMPARE_012.wav" type="audio/wav">fs</audio></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<body>
+  <!--Navigation bar-->
+  <div id="nav-placeholder">
 
-    </article>
-  </main>
+  </div>
+
+  <script>
+    $.get("/nav.html", function (data) {
+      $("#nav-placeholder").replaceWith(data);
+    });
+  </script>
+  <!--end of Navigation bar-->
+
+  <div class="container">
+    <header role="banner">
+      <h2 style="text-align: center;">
+        HOW TO PUSH THE FASTEST MODEL 50X FASTER:
+        <br>
+        STREAMING NON-AUTOREGRESSIVE SPEECH SYNTHESIS ON
+        <br>
+        RESOUCE-LIMITED DEVICES
+      </h2>
+    </header>
+    <p>
+      <span style="font-weight: bold;">Abstract:</span>
+      In voice-based human-machine interaction applications, the
+      synthesis speech module's response time or system latency is
+      one of the most critical factors affecting the user experience.
+      Minimizing the latency of the high-quality text-to-speech
+      system on end-user resource-limited devices is an important
+      task. In this paper, the FastStreamSpeech model is proposed
+      combining the advantages of the advanced approaches in
+      neural-based speech synthesis. The proposed method
+      includes (1) a specific streaming inference architecture for the
+      non-autoregressive acoustic and vocoder models and (2) an
+      attention masking mechanism in the training phase. The
+      experimental evaluations of the proposed model budget
+      mobile CPU show that this model can significantly reduce the
+      system latency by 5 to 50 times compared with the original
+      model while maintaining the high quality of output speech.
+    </p>
+    <p>
+      <span style="font-weight: bold;">Index Terms</span> — high-quality text-to-speech, streaming
+      inference, non-autoregressive model, resource-limited
+      devices, Vietnamese speech synthesis.
+    </p>
+    <main>
+      <article>
+        <header>
+          <h2>Audio samples</h2>
+        </header>
+        <blockquote style="font-size:large">
+          "Ngày mai không biết trời có mưa nhiều không hả anh , anh nhớ mang áo mưa đi nhé"
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Ground Truth</th>
+                <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
+                <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
+                <th style="text-align: center">FastStreamSpeech</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/gt/COMPARE_005.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/bl/COMPARE_005.wav" type="audio/wav">bl</audio></td>
+                <td><audio controls src="./assets/audio/voc/COMPARE_005.wav" type="audio/wav">voc</audio></td>
+                <td><audio controls src="./assets/audio/fs/COMPARE_005.wav" type="audio/wav">fs</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "Ngay sau lễ khai mạc , Đại hội đồng AIPO 27 đã tiến hành phiên họp toàn thể lần thứ nhất ."
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Ground Truth</th>
+                <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
+                <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
+                <th style="text-align: center"> FastStreamSpeech</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/gt/MISC_33461.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/bl/MISC_33461.wav" type="audio/wav">bl</audio></td>
+                <td><audio controls src="./assets/audio/voc/MISC_33461.wav" type="audio/wav">voc</audio></td>
+                <td><audio controls src="./assets/audio/fs/MISC_33461.wav" type="audio/wav">fs</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "Khách nước ngoài đến Việt Nam ăn Tết thường cảm thấy thú vị trước những tập tục này."
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Ground Truth</th>
+                <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
+                <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
+                <th style="text-align: center"> FastStreamSpeech</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/gt/SYNTAX_106.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/bl/SYNTAX_106.wav" type="audio/wav">bl</audio></td>
+                <td><audio controls src="./assets/audio/voc/SYNTAX_106.wav" type="audio/wav">voc</audio></td>
+                <td><audio controls src="./assets/audio/fs/SYNTAX_106.wav" type="audio/wav">fs</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "Việt Nam hiện đang đẩy mạnh công cuộc cải cách và EU mong muốn giúp đỡ Việt Nam đạt được mục đích này ."
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Ground Truth</th>
+                <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
+                <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
+                <th style="text-align: center"> FastStreamSpeech</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/gt/DIEP_03946.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/bl/DIEP_03946.wav" type="audio/wav">bl</audio></td>
+                <td><audio controls src="./assets/audio/voc/DIEP_03946.wav" type="audio/wav">voc</audio></td>
+                <td><audio controls src="./assets/audio/fs/DIEP_03946.wav" type="audio/wav">fs</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "Sự vươn lên và thành công của những người ấy làm tôi nể phục."
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Ground Truth</th>
+                <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
+                <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
+                <th style="text-align: center"> FastStreamSpeech</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/gt/SYNTAX_214.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/bl/SYNTAX_214.wav" type="audio/wav">bl</audio></td>
+                <td><audio controls src="./assets/audio/voc/SYNTAX_214.wav" type="audio/wav">voc</audio></td>
+                <td><audio controls src="./assets/audio/fs/SYNTAX_214.wav" type="audio/wav">fs</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "trong những năm qua , bằng niềm say mê sáng tạo , nhiều nông dân đã tự tìm tòi và sáng chế ra nhiều loại
+          thiết bị
+          sử dụng trong sản xuất nông nghiệp như máy tuốt lúa , máy cấy lúa mi ni , máy tẽ ngô , máy cắt cỏ , máy băm
+          bèo ,
+          góp phần đáng kể vào việc tăng năng suất và giảm thời gian lao động cho người nông dân"
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Ground Truth</th>
+                <th style="text-align: center">Fastspeech2 + MultiBand-MelGAN (no streaming)</th>
+                <th style="text-align: center">Non-streaming Fastspeech 2 + Streaming MultiBand-MelGAN</th>
+                <th style="text-align: center"> FastStreamSpeech</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/gt/COMPARE_012.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/bl/COMPARE_012.wav" type="audio/wav">bl</audio></td>
+                <td><audio controls src="./assets/audio/voc/COMPARE_012.wav" type="audio/wav">voc</audio></td>
+                <td><audio controls src="./assets/audio/fs/COMPARE_012.wav" type="audio/wav">fs</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </article>
+    </main>
+
+  </div>
 
 </body>
 

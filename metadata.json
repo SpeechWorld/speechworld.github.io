@@ -1,0 +1,14 @@
+[
+    {
+        "id": "MetaSpeakerStyle",
+        "title": "MetaSpeakerStyle: Meta learning-based Cross Speaker Style Synthesis for Multi-Speaker Multi-Style Text to Speech",
+        "authors": "",
+        "datePublished": ""
+    },
+    {
+        "id": "faststreamspeech",
+        "title": "How to Push the Fastest Model 50x Faster: Streaming Non-Autoregressive Speech Synthesis on Resouce-Limited Devices",
+        "authors": "Van-Thinh Nguyen, Hung-Cuong Pham, Dang-Khoa Mac",
+        "datePublished": "2023-05-05"
+    }
+]

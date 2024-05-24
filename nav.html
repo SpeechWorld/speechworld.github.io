@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/nav.css">
+<div class="navbar">
+    <a class="logo" href="/index.html">
+        <img src="/assets/logo-color.svg" alt="VinBigData">
+    </a>
+    <div class="title">SPEECHWORLD</div>
+    <div>Speech Processing Lab</div>
+</div>
+
+<script>
+    window.onscroll = function() {
+        var navbar = document.querySelector('.navbar');
+        if (window.pageYOffset > 0) {
+            navbar.classList.add('sticky');
+        } else {
+            navbar.classList.remove('sticky');
+        }
+    };
+</script>
