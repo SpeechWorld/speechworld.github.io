@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.88.1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+	<link rel="stylesheet" href="../css/custom.css">
+	<link rel="stylesheet" href="../css/normalize.css">
+
+	<title>FastStreamSpeech</title>
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<script src="//code.jquery.com/jquery.min.js"></script>
+
+    <style>
+        tr {
+            display: flex;
+        }
+
+        td {
+            flex: 1;
+            text-align: center;
+        }
+
+        th {
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+  <!--Navigation bar-->
+  <div id="nav-placeholder">
+
+  </div>
+
+  <script>
+    $.get("/nav.html", function (data) {
+      $("#nav-placeholder").replaceWith(data);
+    });
+  </script>
+  <!--end of Navigation bar-->
+
+  <div class="container">
+    <header role="banner">
+      <h2 style="text-align: center;">
+        FastSpeechPrompt: Controlling Expressive Speech Synthesis with Text Prompt
+      </h2>
+    </header>
+    <!-- <p>
+      <span style="font-weight: bold;">Abstract:</span>
+      In voice-based human-machine interaction applications, the
+      synthesis speech module's response time or system latency is
+      one of the most critical factors affecting the user experience.
+      Minimizing the latency of the high-quality text-to-speech
+      system on end-user resource-limited devices is an important
+      task. In this paper, the FastStreamSpeech model is proposed
+      combining the advantages of the advanced approaches in
+      neural-based speech synthesis. The proposed method
+      includes (1) a specific streaming inference architecture for the
+      non-autoregressive acoustic and vocoder models and (2) an
+      attention masking mechanism in the training phase. The
+      experimental evaluations of the proposed model budget
+      mobile CPU show that this model can significantly reduce the
+      system latency by 5 to 50 times compared with the original
+      model while maintaining the high quality of output speech.
+    </p>
+    <p>
+      <span style="font-weight: bold;">Index Terms</span> — high-quality text-to-speech, streaming
+      inference, non-autoregressive model, resource-limited
+      devices, Vietnamese speech synthesis.
+    </p> -->
+    <main>
+      <article>
+        <header>
+          <h2>Audio Samples</h2>
+        </header>
+        <blockquote style="font-size:large">
+          "Ngay sau lễ khai mạc , Đại hội đồng AIPO 27 đã tiến hành phiên họp toàn thể lần thứ nhất ."
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Người phụ nữ giọng Bắc đang nói</th>
+                <th style="text-align: center">Người đàn ông có chất giọng miền Bắc</th>
+                <th style="text-align: center">Người đàn ông có chất giọng miền Nam</th>
+                <th style="text-align: center">Người phụ nữ có chất giọng miền Nam</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/female-northen.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/male-northen.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/male-southen.wav" type="audio/wav">bl</audio></td>
+                <td><audio controls src="./assets/audio/female-southen.wav" type="audio/wav">bl</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "Đầu lòng hai ả tố nga,<br>
+          Thúy Kiều là chị, em là Thúy Vân.<br>
+          Mai cốt cách, tuyết tinh thần,<br>
+          Mỗi người một vẻ, mười phân vẹn mười."
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Người đàn ông đang nói, không thể hiện cảm xúc gì đặc biệt</th>
+                <th style="text-align: center">Người đàn ông đang ngâm nga một bài thơ. Giọng đọc nhẹ nhàng, truyền cảm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/male-donot-read-poem.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/male-read-poem.wav" type="audio/wav">bl</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "Trà thảo mộc Đốc tơ Thanh. Thanh lọc cơ thể. Không lo bị nóng."
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Người phụ nữ nói với giọng miền Bắc, không thể hiện cảm xúc gì đặc biệt.</th>
+                <th style="text-align: center">Người phụ nữ nói với giọng miền Bắc. Cô ấy đang quảng cáo cho một sản phẩm nào đó.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/female-donot-advertising.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/female-advertising.wav" type="audio/wav">bl</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "Chúng mày đang làm cái gì đấy hả!"
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Người đàn ông nói với một tâm trạng bình thường.</th>
+                <th style="text-align: center">Người đàn ông đang thể hiện sự tức giận qua lời nói.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/man-emotion-neutral.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/man-emotion-angry.wav" type="audio/wav">bl</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <blockquote style="font-size:large">
+          "Ôi dào ôi, tưởng như thế nào, hoá ra cũng chỉ có thế"
+        </blockquote>
+        <div class="scroll-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: center">Một người phụ nữ nói với ngữ điệu bình thường.</th>
+                <th style="text-align: center">Một người phụ nữ nói một cách mỉa mai.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><audio controls src="./assets/audio/female-inton-neutral.wav" type="audio/wav">gt</audio></td>
+                <td><audio controls src="./assets/audio/girl-mia-mai.wav" type="audio/wav">bl</audio></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </article>
+    </main>
+
+  </div>
+
+</body>
+
+</html>

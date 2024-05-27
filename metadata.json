@@ -10,5 +10,10 @@
         "title": "How to Push the Fastest Model 50x Faster: Streaming Non-Autoregressive Speech Synthesis on Resouce-Limited Devices",
         "authors": "Van-Thinh Nguyen, Hung-Cuong Pham, Dang-Khoa Mac",
         "datePublished": "2023-05-05"
+    },
+    {
+        "id": "fastspeechprompt",
+        "title": "FastSpeechPrompt: Controlling Expressive Speech Synthesis with Text Prompt",
+        "authors": "Huy-Hoang Vu, Hung-Cuong Pham, Van-Thinh Nguyen, Dang-Khoa Mac"
     }
 ]
