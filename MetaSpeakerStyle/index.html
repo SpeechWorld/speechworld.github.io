@@ -43,19 +43,7 @@
 					</div>
 					<p>
 						<b>Abstract.</b>
-						Recently, expressive speech synthesis has attracted more attention and research to improve
-						naturalness of speech.
-						However, constructing an emotional speech dataset is a costly process, with each speaker able to
-						express only a limited styles and emotions.
-						Therefore, the development of models capable of cross-speaker style synthesis in speech
-						synthesis is crucial for augmenting the diversity of synthesized speech in real-world
-						applications.
-						Additionally, most of the previous approaches focus on disentangling speaker and style embedding
-						using same sample as the source for content, speaker, style inputs,
-						which does not reflect the disparate sources of theses inputs in the inference of real-world
-						application. To address these limitation in the previous method,
-						this paper introduces an unsupervised MetaSpeakerStyle model which is learned with a specific
-						designed meta-learning procedure to avoid training-inference mismatch.
+						Recently, expressive speech synthesis has attracted more attention and research to improve the naturalness of speech. However,  constructing an emotional speech datasets is a costly process, with each speaker able to express only a limited set of styles and emotions. Therefore, the development of models capable of cross-speaker style synthesis in speech synthesis is crucial for augmenting the diversity of synthesized speech in real-world applications. Additionally, most of the previous approaches focus on disentangling speaker and style embedding using the same sample as the source for content, speaker, and style input, which does not reflect the disparate sources of these inputs in the inference of real-world application. To address these limitations in the previous method, this paper introduces an unsupervised MetaSpeakerStyle model which is learned with a proposed meta learning procedure to reduce training-inference mismatch. The results of the experiment show that the proposed methods achieved better style expression and recognition compared to the baseline model.
 					</p>
 
 					<br><br>
@@ -63,18 +51,29 @@
 				</div>
 
 				<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
-					<h2 id="model-overview" style="text-align: center;">Model Overview</h2>
-
+					<h2 id="model-overview" style="text-align: center;">MultiSpeakerStyle Model</h2>
 					<body>
 						<p style="text-align: center;">
-							<img src="./MultispeakerStyle.png" height="400" width="800">
+							<!-- Adjusted the height and width to make this image smaller -->
+							<img src="./MultispeakerStyle.png" height="300" width="600">
 						</p>
 					</body>
 					<p style="text-align: center;">
 						The overview of MultiSpeakerStyle model.
 					</p>
 				</div>
-
+				<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+					<h2 id="model-overview" style="text-align: center;">MetaSpeakerStyle Model</h2>
+					<body>
+						<p style="text-align: center;">
+							<img src="./MultispeakerStyle_paper-Metalearning.drawio.png" height="400" width="800">
+						</p>
+					</body>
+					<p style="text-align: center;">
+						<b>The Proposed Meta Learning Procedure.</b> The MultiSpeakerStyle model use style embedding from support mel and the query text, query speaker embedding to synthesize speech as the real-world scenarios. The Query Style Consistency Loss ensured that synthesized speech from query predicted mel represents the same style as support mel. LUT is for "look-up table".
+					</p>
+				</div>				
+				
 				<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
 					<h2 id="Style-Expressive" style="text-align: center;">Evaluation of Expressiveness</h2>
 					<!-- <p> 
@@ -104,17 +103,17 @@
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/NEU/MetaVoicemultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/NEU/MetaVoicemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/NEU/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/NEU/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/NEU/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/NEU/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 								</tr>
@@ -125,17 +124,17 @@
 									</audio></td>
 								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 										<source
-											src="audios/AUT/MetaVoicemultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+											src="audios/AUT/MetaVoicemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 											autoplay />Your browser does not support the audio element.
 									</audio></td>
 								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 										<source
-											src="audios/AUT/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+											src="audios/AUT/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 											autoplay />Your browser does not support the audio element.
 									</audio></td>
 								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 										<source
-											src="audios/AUT/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+											src="audios/AUT/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 											autoplay />Your browser does not support the audio element.
 									</audio></td>
 								</tr>
@@ -147,17 +146,17 @@
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/AST/MetaVoicemultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/AST/MetaVoicemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/AST/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/AST/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/AST/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/AST/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 								</tr>
@@ -169,17 +168,199 @@
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/DOU/MetaVoicemultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/DOU/MetaVoicemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/DOU/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/DOU/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
 											<source
-												src="audios/DOU/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_M02_HuuTri/109_Khoa3_1_1_1_1_1_1.wav"
+												src="audios/DOU/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_F02_HoaiAnh/109_Khoa3_1_1_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="5" style="text-align: left;vertical-align:middle;width: 500px">tất cả mọi người đi theo anh</td>
+								<tr>
+									<td style="text-align: center;vertical-align:middle;width: 220px">Neutral</td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source src="audios/NEU/Groundtruth/VNAttitude/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/NEU/MetaVoicemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/NEU/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/NEU/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+								</tr>
+								<td style="text-align: center;vertical-align:middle;width: 220px">Authority</td>
+								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+										<source src="audios/AUT/Groundtruth/VNAttitude/120_Khoa3_5b_4_3_1_1_6.wav"
+											autoplay />Your browser does not support the audio element.
+									</audio></td>
+								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+										<source
+											src="audios/AUT/MetaVoicemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+											autoplay />Your browser does not support the audio element.
+									</audio></td>
+								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+										<source
+											src="audios/AUT/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+											autoplay />Your browser does not support the audio element.
+									</audio></td>
+								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+										<source
+											src="audios/AUT/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+											autoplay />Your browser does not support the audio element.
+									</audio></td>
+								</tr>
+								<tr>
+									<td style="text-align: center;vertical-align:middle;width: 220px">Astroundment </td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source src="audios/AST/Groundtruth/VNAttitude/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/AST/MetaVoicemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/AST/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/AST/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+								</tr>
+								<tr>
+									<td style="text-align: center;vertical-align:middle;width: 220px">Doubt</td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source src="audios/DOU/Groundtruth/VNAttitude/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/DOU/MetaVoicemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/DOU/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/DOU/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_F02_HoaiAnh/120_Khoa3_5b_4_3_1_1_6.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="5" style="text-align: left;vertical-align:middle;width: 500px">bảy trăm hai mươi ba</td>
+								<tr>
+									<td style="text-align: center;vertical-align:middle;width: 220px">Neutral</td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source src="audios/NEU/Groundtruth/VNAttitude/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/NEU/MetaVoicemultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/NEU/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/NEU/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+								</tr>
+								<td style="text-align: center;vertical-align:middle;width: 220px">Authority</td>
+								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+										<source src="audios/AUT/Groundtruth/VNAttitude/100_Khoa3_4_1_1_1_1.wav"
+											autoplay />Your browser does not support the audio element.
+									</audio></td>
+								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+										<source
+											src="audios/AUT/MetaVoicemultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+											autoplay />Your browser does not support the audio element.
+									</audio></td>
+								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+										<source
+											src="audios/AUT/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+											autoplay />Your browser does not support the audio element.
+									</audio></td>
+								<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+										<source
+											src="audios/AUT/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+											autoplay />Your browser does not support the audio element.
+									</audio></td>
+								</tr>
+								<tr>
+									<td style="text-align: center;vertical-align:middle;width: 220px">Astroundment </td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source src="audios/AST/Groundtruth/VNAttitude/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/AST/MetaVoicemultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/AST/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/AST/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+								</tr>
+								<tr>
+									<td style="text-align: center;vertical-align:middle;width: 220px">Doubt</td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source src="audios/DOU/Groundtruth/VNAttitude/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/DOU/MetaVoicemultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/DOU/MultispeakerStyle_basemultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
+												autoplay />Your browser does not support the audio element.
+										</audio></td>
+									<td style="text-align: center"><audio controls="controls" style="width: 140px;">
+											<source
+												src="audios/DOU/MultispeakerStyle_OneHot_Metamultistream_hifigan_v1.0.3/S_M02_HuuTri/100_Khoa3_4_1_1_1_1.wav"
 												autoplay />Your browser does not support the audio element.
 										</audio></td>
 								</tr>
